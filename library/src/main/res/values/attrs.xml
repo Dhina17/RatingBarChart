@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="RatingBarChart">
+        <attr name="barPadding" format="dimension" />
         <attr name="barRadius" format="dimension" />
         <attr name="barThickness" format="dimension" />
     </declare-styleable>
