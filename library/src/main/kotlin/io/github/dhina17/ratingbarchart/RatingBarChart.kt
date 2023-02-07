@@ -23,11 +23,25 @@ class RatingBarChart @JvmOverloads constructor(
 
     private val bars = mutableListOf<LinearProgressIndicator>()
 
+    private var barRadius: Int = DEFAULT_BAR_RADIUS
+
     init {
         // We need to add the views in column-like manner
         orientation = VERTICAL
+        // Obtain attrs
+        obtainAttrs(context, attrs)
         // Set up the bars
         setupBars()
+    }
+
+    private fun obtainAttrs(context: Context, attrs: AttributeSet?) {
+        val attributes =
+            context.obtainStyledAttributes(attrs, R.styleable.RatingBarChart)
+        // Retrieve the radius from the attributes
+        barRadius = attributes.getDimensionPixelSize(
+            R.styleable.RatingBarChart_barRadius,
+            DEFAULT_BAR_RADIUS.px
+        )
     }
 
     private fun setupBars() {
@@ -38,7 +52,7 @@ class RatingBarChart @JvmOverloads constructor(
                 isIndeterminate = false
                 max = MAX_BAR_VALUE
                 setPadding(10)
-                trackCornerRadius = 100
+                trackCornerRadius = barRadius
                 trackThickness = 20
             }
             // Add the bar to the bars list.
@@ -66,5 +80,8 @@ class RatingBarChart @JvmOverloads constructor(
 
         // Total value of the bar progress
         private const val MAX_BAR_VALUE = 100
+
+        // Default bar radius
+        private const val DEFAULT_BAR_RADIUS = 0
     }
 }
