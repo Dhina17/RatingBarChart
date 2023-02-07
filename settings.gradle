@@ -13,4 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "RatingBarChart"
+include ':app'
 include ':library'
