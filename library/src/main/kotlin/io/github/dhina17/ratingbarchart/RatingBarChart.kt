@@ -12,6 +12,17 @@ class RatingBarChart @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
+    // Bar values
+    // Index - whose values
+    // 0 - 5 star
+    // 1 - 4 star
+    // 2 - 3 star
+    // 3 - 2 star
+    // 4 - 1 star
+    private var barValues = IntArray(MAX_BAR_COUNT)
+
+    private val bars = mutableListOf<LinearProgressIndicator>()
+
     init {
         // We need to add the views in column-like manner
         orientation = VERTICAL
@@ -21,19 +32,33 @@ class RatingBarChart @JvmOverloads constructor(
 
     private fun setupBars() {
         repeat(MAX_BAR_COUNT) {
+            // Create a bar (LinearProgressIndicator)
             val bar = LinearProgressIndicator(context).apply {
                 // Later move to a style.
                 isIndeterminate = false
-                progress = 50
                 max = MAX_BAR_VALUE
                 setPadding(10)
                 trackCornerRadius = 100
                 trackThickness = 20
             }
+            // Add the bar to the bars list.
+            bars.add(bar)
+            // Add the view to the parent.
             addView(bar)
         }
     }
 
+    private fun applyBarValues() {
+        // Set the values to the bars
+        bars.forEachIndexed { index, bar ->
+            bar.progress = barValues[index]
+        }
+    }
+
+    fun setBarValues(values: IntArray) {
+        barValues = values
+        applyBarValues()
+    }
 
     companion object {
         // Total bars in the chart
