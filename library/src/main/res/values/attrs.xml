@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="RatingBarChart">
         <attr name="barRadius" format="dimension" />
+        <attr name="barThickness" format="dimension" />
     </declare-styleable>
 </resources>

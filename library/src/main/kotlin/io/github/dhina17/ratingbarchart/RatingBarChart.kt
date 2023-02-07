@@ -25,6 +25,8 @@ class RatingBarChart @JvmOverloads constructor(
 
     private var barRadius: Int = DEFAULT_BAR_RADIUS
 
+    private var barThickness: Int = DEFAULT_BAR_THICKNESS
+
     init {
         // We need to add the views in column-like manner
         orientation = VERTICAL
@@ -40,7 +42,12 @@ class RatingBarChart @JvmOverloads constructor(
         // Retrieve the radius from the attributes
         barRadius = attributes.getDimensionPixelSize(
             R.styleable.RatingBarChart_barRadius,
-            DEFAULT_BAR_RADIUS.px
+            DEFAULT_BAR_RADIUS
+        )
+        // Retrieve the bar thickness from the attributes
+        barThickness = attributes.getDimensionPixelSize(
+            R.styleable.RatingBarChart_barThickness,
+            DEFAULT_BAR_THICKNESS
         )
     }
 
@@ -52,7 +59,7 @@ class RatingBarChart @JvmOverloads constructor(
                 isIndeterminate = false
                 max = MAX_BAR_VALUE
                 setPadding(10)
-                trackThickness = 20
+                trackThickness = barThickness
                 trackCornerRadius = barRadius
 
             }
@@ -83,6 +90,9 @@ class RatingBarChart @JvmOverloads constructor(
         private const val MAX_BAR_VALUE = 100
 
         // Default bar radius
-        private const val DEFAULT_BAR_RADIUS = 0
+        private val DEFAULT_BAR_RADIUS = 0.px
+
+        // Default bar thickness
+        private val DEFAULT_BAR_THICKNESS = 10.px
     }
 }

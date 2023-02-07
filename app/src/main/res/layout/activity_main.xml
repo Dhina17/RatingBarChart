@@ -47,6 +47,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         app:barRadius="10dp"
+        app:barThickness="10dp"
         android:padding="10dp" />
 
 </LinearLayout>
