@@ -52,8 +52,9 @@ class RatingBarChart @JvmOverloads constructor(
                 isIndeterminate = false
                 max = MAX_BAR_VALUE
                 setPadding(10)
-                trackCornerRadius = barRadius
                 trackThickness = 20
+                trackCornerRadius = barRadius
+
             }
             // Add the bar to the bars list.
             bars.add(bar)
