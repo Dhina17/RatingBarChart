@@ -3,8 +3,6 @@ package io.github.dhina17.ratingbarchart
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import androidx.core.view.setPadding
-import com.google.android.material.progressindicator.LinearProgressIndicator
 
 class RatingBarChart @JvmOverloads constructor(
     context: Context,
@@ -21,7 +19,7 @@ class RatingBarChart @JvmOverloads constructor(
     // 4 - 1 star
     private var barValues = IntArray(MAX_BAR_COUNT)
 
-    private val bars = mutableListOf<LinearProgressIndicator>()
+    private val bars = mutableListOf<Bar>()
 
     private var barRadius: Int = DEFAULT_BAR_RADIUS
 
@@ -59,16 +57,15 @@ class RatingBarChart @JvmOverloads constructor(
     }
 
     private fun setupBars() {
-        repeat(MAX_BAR_COUNT) {
+        for (index in MAX_BAR_COUNT downTo 1) {
             // Create a bar (LinearProgressIndicator)
-            val bar = LinearProgressIndicator(context).apply {
-                // Later move to a style.
-                isIndeterminate = false
-                max = MAX_BAR_VALUE
-                setPadding(barPadding)
-                trackThickness = barThickness
-                trackCornerRadius = barRadius
-
+            val bar = Bar(context).apply {
+                setupBarContent(
+                    label = "$index",
+                    barPadding = barPadding,
+                    barThickness = barThickness,
+                    barCornerRadius = barRadius
+                )
             }
             // Add the bar to the bars list.
             bars.add(bar)
@@ -80,7 +77,7 @@ class RatingBarChart @JvmOverloads constructor(
     private fun applyBarValues() {
         // Set the values to the bars
         bars.forEachIndexed { index, bar ->
-            bar.progress = barValues[index]
+            bar.setBarValue(barValues[index])
         }
     }
 
@@ -92,9 +89,6 @@ class RatingBarChart @JvmOverloads constructor(
     companion object {
         // Total bars in the chart
         private const val MAX_BAR_COUNT = 5
-
-        // Total value of the bar progress
-        private const val MAX_BAR_VALUE = 100
 
         // Default bar radius
         private val DEFAULT_BAR_RADIUS = 0.px
