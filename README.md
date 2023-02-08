@@ -87,6 +87,10 @@ ratingBarChart.setBarValues(values)
 ![RatingBarChart Usage](https://github.com/Dhina17/RatingBarChart/raw/main/screenshots/rating_bar_chart_usage.png)
 
 
+## Contributions
+
+Your contributions are always welcome! Please submit a pull request or create an issue to add new features or fix a bug.
+
 ## License
 
 This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
