@@ -47,7 +47,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:padding="10dp"
-        app:barPadding="10dp"
+        app:barPadding="3dp"
         app:barRadius="10dp"
         app:barThickness="10dp" />
 

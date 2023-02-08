@@ -97,6 +97,6 @@ class RatingBarChart @JvmOverloads constructor(
         private val DEFAULT_BAR_THICKNESS = 10.px
 
         // Default bar padding
-        private val DEFAULT_BAR_PADDING = 10.px
+        private val DEFAULT_BAR_PADDING = 3.px
     }
 }
