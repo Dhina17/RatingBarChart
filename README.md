@@ -77,14 +77,16 @@ ratingBarChart.setBarValues(values)
 
 ### Screenshots
 
-- Standalone RatingBarChart
+#### Standalone RatingBarChart
 
-![RatingBarChart](https://github.com/Dhina17/RatingBarChart/raw/main/screenshots/rating_bar_chart.png)
+<img src="/screenshots/rating_bar_chart.png" width="270" height="585">
 
 
-- Usage of RatingBarChart. Refer `app/src/main/res/layout/activity_main.xml`
+#### RatingBarChart usage
 
-![RatingBarChart Usage](https://github.com/Dhina17/RatingBarChart/raw/main/screenshots/rating_bar_chart_usage.png)
+Refer `app/src/main/res/layout/activity_main.xml`
+
+<img src="/screenshots/rating_bar_chart_usage.png" width="270" height="585">
 
 
 ## Contributions
