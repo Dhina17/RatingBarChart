@@ -37,7 +37,14 @@ class Bar @JvmOverloads constructor(
         addView(progressBar)
     }
 
-    fun setupBarContent(label: String, barPadding: Int, barThickness: Int, barCornerRadius: Int) {
+    @JvmOverloads
+    fun setupBarContent(
+        label: String,
+        barPadding: Int,
+        barThickness: Int,
+        barCornerRadius: Int,
+        barTrackColor: Int? = null
+    ) {
         labelView.apply {
             setPadding(barPadding)
             text = label
@@ -46,6 +53,7 @@ class Bar @JvmOverloads constructor(
             setPadding(barPadding)
             trackThickness = barThickness
             trackCornerRadius = barCornerRadius
+            barTrackColor?.let { trackColor = it }
         }
     }
 

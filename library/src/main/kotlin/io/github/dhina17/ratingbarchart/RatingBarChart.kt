@@ -27,6 +27,8 @@ class RatingBarChart @JvmOverloads constructor(
 
     private var barPadding: Int = DEFAULT_BAR_PADDING
 
+    private var barTrackColor: Int? = null
+
     init {
         // We need to add the views in column-like manner
         orientation = VERTICAL
@@ -54,6 +56,7 @@ class RatingBarChart @JvmOverloads constructor(
             R.styleable.RatingBarChart_barPadding,
             DEFAULT_BAR_PADDING
         )
+        barTrackColor = attributes.getColor(R.styleable.RatingBarChart_barTrackColor, 0)
     }
 
     private fun setupBars() {
@@ -64,7 +67,8 @@ class RatingBarChart @JvmOverloads constructor(
                     label = "$index",
                     barPadding = barPadding,
                     barThickness = barThickness,
-                    barCornerRadius = barRadius
+                    barCornerRadius = barRadius,
+                    barTrackColor = if (barTrackColor == 0) null else barTrackColor
                 )
             }
             // Add the bar to the bars list.
@@ -98,5 +102,7 @@ class RatingBarChart @JvmOverloads constructor(
 
         // Default bar padding
         private val DEFAULT_BAR_PADDING = 3.px
+
+        // Default bar
     }
 }

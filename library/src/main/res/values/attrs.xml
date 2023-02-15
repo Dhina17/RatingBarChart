@@ -4,5 +4,6 @@
         <attr name="barPadding" format="dimension" />
         <attr name="barRadius" format="dimension" />
         <attr name="barThickness" format="dimension" />
+        <attr name="barTrackColor" format="color" />
     </declare-styleable>
 </resources>
