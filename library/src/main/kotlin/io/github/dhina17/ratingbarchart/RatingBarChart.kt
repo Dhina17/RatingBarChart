@@ -29,6 +29,8 @@ class RatingBarChart @JvmOverloads constructor(
 
     private var barTrackColor: Int? = null
 
+    private var barLabels: Array<CharSequence>? = null
+
     init {
         // We need to add the views in column-like manner
         orientation = VERTICAL
@@ -56,7 +58,13 @@ class RatingBarChart @JvmOverloads constructor(
             R.styleable.RatingBarChart_barPadding,
             DEFAULT_BAR_PADDING
         )
+        // Retrieve the bar track color from the attributes.
+        // Pass 0 as default value but it is used no where.
+        // We let the LinearProgressIndicator's default.
         barTrackColor = attributes.getColor(R.styleable.RatingBarChart_barTrackColor, 0)
+
+        // Retrieve the bar label from the attributes
+        barLabels = attributes.getTextArray(R.styleable.RatingBarChart_barLabels)
     }
 
     private fun setupBars() {
@@ -64,7 +72,7 @@ class RatingBarChart @JvmOverloads constructor(
             // Create a bar (LinearProgressIndicator)
             val bar = Bar(context).apply {
                 setupBarContent(
-                    label = "$index",
+                    label = (barLabels?.get(index - 1)?.toString() ?: "$index"),
                     barPadding = barPadding,
                     barThickness = barThickness,
                     barCornerRadius = barRadius,
@@ -102,7 +110,5 @@ class RatingBarChart @JvmOverloads constructor(
 
         // Default bar padding
         private val DEFAULT_BAR_PADDING = 3.px
-
-        // Default bar
     }
 }
