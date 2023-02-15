@@ -101,6 +101,21 @@ class RatingBarChart @JvmOverloads constructor(
         applyBarValues()
     }
 
+    /**
+     * Bar end labels
+     * Index - whose values
+     * 0 - 5 star
+     * 1 - 4 star
+     * 2 - 3 star
+     * 3 - 2 star
+     * 4 - 1 star
+     */
+    fun setBarLabels(values: List<String>) {
+        bars.forEachIndexed { index, bar ->
+            bar.setBarEndLabel(values[index])
+        }
+    }
+
     companion object {
         // Total bars in the chart
         private const val MAX_BAR_COUNT = 5

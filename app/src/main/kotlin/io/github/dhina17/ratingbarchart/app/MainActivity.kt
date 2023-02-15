@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
             Random.Default.nextInt(100),
             Random.Default.nextInt(100),
         )
+        val endLabels = listOf("17", "13", "05", "06", "07")
         ratingBarChart.setBarValues(values)
+        ratingBarChart.setBarLabels(endLabels)
     }
 }

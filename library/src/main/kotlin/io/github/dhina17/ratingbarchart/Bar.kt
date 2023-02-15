@@ -26,6 +26,10 @@ class Bar @JvmOverloads constructor(
         }
     }
 
+    private val endLabelView: MaterialTextView by lazy {
+        MaterialTextView(context)
+    }
+
     init {
         // default orientation is horizontal.
         setupView()
@@ -34,7 +38,21 @@ class Bar @JvmOverloads constructor(
     private fun setupView() {
         // Add the label and progress bar in parent
         addView(labelView)
-        addView(progressBar)
+        addView(progressBar, LayoutParams(
+            LayoutParams.WRAP_CONTENT,
+            LayoutParams.WRAP_CONTENT,
+        ).apply {
+            // Fill the remaining space
+            weight = 1f
+        })
+        addView(endLabelView, LayoutParams(
+            LayoutParams.WRAP_CONTENT,
+            LayoutParams.WRAP_CONTENT,
+        ).apply {
+            // gravity
+            gravity = Gravity.END
+            textAlignment = TEXT_ALIGNMENT_VIEW_END
+        })
     }
 
     @JvmOverloads
@@ -55,10 +73,18 @@ class Bar @JvmOverloads constructor(
             trackCornerRadius = barCornerRadius
             barTrackColor?.let { trackColor = it }
         }
+        endLabelView.apply {
+            setPadding(barPadding)
+            text = label
+        }
     }
 
     fun setBarValue(value: Int) {
         progressBar.progress = value
+    }
+
+    fun setBarEndLabel(endLabel: String) {
+        endLabelView.text = endLabel
     }
 
     companion object {
