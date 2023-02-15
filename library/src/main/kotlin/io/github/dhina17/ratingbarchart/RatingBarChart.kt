@@ -65,6 +65,9 @@ class RatingBarChart @JvmOverloads constructor(
 
         // Retrieve the bar label from the attributes
         barLabels = attributes.getTextArray(R.styleable.RatingBarChart_barLabels)
+
+        // Recycle the attributes array
+        attributes.recycle()
     }
 
     private fun setupBars() {
