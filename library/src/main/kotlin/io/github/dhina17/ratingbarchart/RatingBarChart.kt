@@ -110,7 +110,7 @@ class RatingBarChart @JvmOverloads constructor(
      * 3 - 2 star
      * 4 - 1 star
      */
-    fun setBarLabels(values: List<String>) {
+    fun setBarEndLabels(values: List<String>) {
         bars.forEachIndexed { index, bar ->
             bar.setBarEndLabel(values[index])
         }

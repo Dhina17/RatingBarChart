@@ -21,6 +21,6 @@ class MainActivity : AppCompatActivity() {
         )
         val endLabels = listOf("17", "13", "05", "06", "07")
         ratingBarChart.setBarValues(values)
-        ratingBarChart.setBarLabels(endLabels)
+        ratingBarChart.setBarEndLabels(endLabels)
     }
 }
