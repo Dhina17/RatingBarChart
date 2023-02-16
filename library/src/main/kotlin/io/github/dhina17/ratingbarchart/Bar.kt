@@ -75,7 +75,6 @@ class Bar @JvmOverloads constructor(
         }
         endLabelView.apply {
             setPadding(barPadding)
-            text = label
         }
     }
 
